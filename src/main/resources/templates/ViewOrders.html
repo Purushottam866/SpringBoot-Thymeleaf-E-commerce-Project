@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center; /* Aligning all text to center */
+        }
+        
+        h1 {
+        	position:relative;
+        	top:10px;
+            color: #333;
+        }
+        
+        .details {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Resetting text alignment for the container */
+        }
+        
+        .details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .details th, .details td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center; /* Aligning table text to center */
+        }
+        
+        .details th {
+            background-color: #f5f5f5;
+        }
+        
+        .view-button {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #6B728E;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .view-button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+        	position:relative;
+        	bottom:10px;
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+    	<center>
+        	<h1>Payment Details</h1>
+        </center>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Payment Id</th>
+                     <th>Date</th>
+                    <th>Amount</th>
+                    <th>View Your product</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr th:each="order:${orders}">
+			<td th:text="${order.order_id}"></td>
+			<td th:text="${order.payment_id}"></td>
+			<td th:text="${order.getDate()}"></td>
+			<td th:text="${order.amount}+'&#8377'"></td>
+			<td><a th:href="@{'/customer/order-items/'+${order.id}}"><button>View Products</button></a></td>
+		</tr>
+                <!-- Add more rows here if needed -->
+            </tbody>
+        </table>
+
+        <a href="/customer/home" class="back-button">Back</a>
+    </div>
+</body>
+</html>

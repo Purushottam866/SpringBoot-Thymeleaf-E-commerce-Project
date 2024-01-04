@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+
+ <style>
+ *{
+ 	  margin: 0;
+      padding: 0;
+ }
+    body {
+      font-family: Arial, sans-serif;
+     background-color: #DBD8E3;
+      margin: 0;
+      padding: 0;
+        font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      
+    }
+
+    .container {
+      width: 50%;
+      margin: 150px auto;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+      width: calc(100% - 12px);
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .btn-group {
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-login {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    .btn-cancel {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+    .a31{
+    margin-top:20px;
+   	  color: #e74c3c;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+    } 
+    .a32{
+     margin-top:20px;
+   	  color: green;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+    } 
+    .account{
+      text-decoration: none;
+    }
+    .btn-back {
+      background-color: #2ecc71;
+    }
+    
+  </style>
+
+</head>
+<body>
+
+<h2 class="a31" th:text="${fail}"></h2>
+<h2 class="a32" th:text="${pass}"></h2>
+
+<form action="/login" method="post">
+ <div class="container">
+ 
+ 
+    <h2>Login</h2>
+    <form>
+      <div class="input-group">
+        <label for="emailOrMobile">Email or Mobile Number</label>
+        <input type="text" id="emailOrMobile" name="emph" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      
+     <a href="/customer/signup" class="account"> <h5>Don't have an account? Click here to signup</5> </a> 
+      
+      <div class="btn-group">
+        <button type="submit" class="btn btn-login">Login</button>
+        <button type="reset" class="btn btn-cancel">Cancel</button>
+         <a href="/"> <button type="button" class="btn btn-back">Back</button> </a>
+      </div>
+    </form>
+  </div>
+</form>
+</body>
+</html>

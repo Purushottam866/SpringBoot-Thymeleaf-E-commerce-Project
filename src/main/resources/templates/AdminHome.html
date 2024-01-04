@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #0066cc;
+  }
+  h2 {
+    text-align: center;
+    color: red; 
+  }
+  h3 {
+    text-align: center;
+    color: green; 
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  button:hover {
+    background-color: #cc5500;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var failMessage = document.querySelector('h2');
+    var passMessage = document.querySelector('h3');
+
+    setTimeout(function() {
+      failMessage.style.display = 'none';
+      passMessage.style.display = 'none';
+    }, 10000); 
+  });
+</script>
+</head>
+<body>
+
+
+	 <h2 th:text="${fail}"></h2>
+     <h3 th:text="${pass}"></h3>
+  <div class="header">
+    <h1>Welcome Admin</h1>
+   
+  </div>
+  <div class="button-container">
+    <a href="/admin/add-product"><button>Add Product</button></a>
+    <a href="/admin/fetch-products"><button>Fetch Products</button></a>
+    <a href="/logout"><button>Logout</button></a>
+  </div>
+</body>
+</html>

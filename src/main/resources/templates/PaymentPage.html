@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Payments</title>
+	
+	 <style>
+	 
+	  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    .about-section {
+      padding: 50px 0;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+    .payment-options {
+      background-color: #fff;
+      padding: 40px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .payment-options h3 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+    .payment-options ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .payment-options li {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+	 
+    #rzp-button1 {
+      background-color: #ff8800; /* Change this to your desired background color */
+      color: #ffffff; /* Change this to your desired text color */
+      padding: 10px 20px; /* Adjust padding as needed */
+      border: none;
+      border-radius: 5px; /* Adjust border-radius for rounded corners */
+      font-size: 16px; /* Adjust font size as needed */
+      cursor: pointer;
+      /* Add any other styles you want */
+    }
+
+    #rzp-button1:hover {
+      background-color: #ffaa00; /* Change this to your desired hover background color */
+      /* Add any other hover styles */
+    }
+  </style>
+	
+</head>
+
+<body>
+	
+	
+	
+	 <header>
+    <h1>Thank You Choosing Our E-commerce Application</h1>
+  </header>
+  <div class="container">
+    <div class="about-section">
+      <h2>Welcome to Our Platform</h2>
+      <p>At Our E-commerce Platform, we're committed to providing you with a seamless and secure shopping experience. Explore our diverse range of products/services with confidence.</p>
+    </div>
+    <div class="payment-options">
+    Are You Sure You Want To Pay:
+      <h3>Payment Options</h3>
+     <button id="rzp-button1">Pay with Razorpay</button>
+      <p>Your security is our priority. We use industry-standard encryption to safeguard your financial information.</p>
+     
+    </div>
+  </div>
+
+	
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		var options = {
+			"key": "[[${details.keyCode}]]", // Enter the Key ID generated from the Dashboard
+			"amount": "[[${(details.amount)*100}]]", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			"currency": "[[${details.currency}]]",
+			"name": "[[${details.name}]]",
+			"description": "[[${details.description}]]",
+			"image": "[[${details.image}]]",
+			"order_id": "[[${details.order_id}]]", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			"callback_url": "http://localhost:8080/customer/payment-complete/[[${details.id}]]",
+			"prefill": {
+				"name": "[[${customer.name}]]",
+				"email": "[[${customer.email}]]",
+				"contact": "+91[[${customer.mobile}]]"
+			},
+			"notes": {
+				"address": "Razorpay Corporate Office"
+			},
+			"theme": {
+				"color": "#3399cc"
+			}
+		};
+		var rzp1 = new Razorpay(options);
+		document.getElementById('rzp-button1').onclick = function (e) {
+			rzp1.open();
+			e.preventDefault();
+		}
+	</script>
+</body>
+
+</html>

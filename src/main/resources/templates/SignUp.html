@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SignUp</title>
+
+ <style>*{
+ 	  margin: 0;
+      padding: 0;
+ }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #DBD8E3;
+      margin: 0;
+      padding: 0;
+      color: #000; /* Setting text color to black */
+    }
+
+    .container {
+      width: 50%;
+      margin: 50px auto;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="email"],
+    .input-group input[type="password"],
+    .input-group input[type="date"],
+    .input-group textarea,
+    .input-group input[type="number"] {
+      width: calc(75% - 12px);
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .input-group textarea {
+      resize: both;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .btn-signup {
+      background-color: #3498db;
+    }
+
+    .btn-cancel,
+    .btn-back {
+      background-color: #e74c3c;
+    }
+
+    .btn-back {
+      background-color: #2ecc71;
+    }
+    .fail{
+    	color:red;
+    }
+    .account{
+    	text-decoration: none;
+    }
+  </style>
+
+</head>
+<body>
+<form action="/customer/signup" th:object="${customer}" method="post"  >
+ <div class="container">
+ 
+ <h1 class="fail" th:text="${fail}"></h1>	
+ 
+    <h2>Signup</h2>
+    <form>
+      <div class="input-group">
+      
+        <label for="name">Name</label>
+        <input class="ao4" type="text" id="name" th:field="*{name}" name="name" >
+         <span  th:errors="*{name}"></span>
+         
+      </div>
+      
+      <div class="input-group">
+      
+        <label for="mobile">Mobile Number</label>
+        <input type="number" id="mobile" th:field="*{mobile}" name="mobile" >
+          <span  th:errors="*{mobile}"></span>
+          
+      </div>
+      
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="*{email}" name="email" >
+          <span  th:errors="*{email}"></span>
+          
+      </div>
+      
+      <div class="input-group">
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" th:field="*{password}" name="password" >
+         <span  th:errors="*{password}"></span>
+         
+      </div>
+      
+      <div class="input-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" th:field="*{dob}" name="dob" >
+        <span  th:errors="*{dob}"></span>
+        
+      </div>
+
+      <div class="input-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" th:field="*{address}" rows="4" ></textarea>
+         <span  th:errors="*{address}"></span>
+        
+      </div>
+      
+      <a href="/login.html" class="account"> <h5>Already have an account? Click here to login</5> </a> 
+      
+      <div class="btn-group">
+       <button type="reset" class="btn btn-cancel">Cancel</button>
+        <button type="submit" class="btn btn-signup">Signup</button>
+       <a href="/"> <button type="button" class="btn btn-back">Back</button> </a>
+       
+      </div>
+    </form>
+  </div>
+</form>
+</body>
+</html>
